@@ -231,7 +231,9 @@ because it doesn't require managing a response-to-callback
 mapping manually.  Nevertheless, it can only be useful if the
 process pointed to by EXECUTABLE reads ids from the messages and
 writes them back in its responses."
-  (let* ((callbacks (list))
+  (let* ((callbacks (make-hash-table :test 'equal)
+
+		    )
          (application
           (json-process-client-start
            :name name
